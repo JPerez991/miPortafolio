@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title id="page-title">Juan Pablo | Desarrollador Full-Stack</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/tsparticles@2.12.0/tsparticles.bundle.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,0..1&display=swap" rel="stylesheet"/>
+  <link href="styles.css" rel="stylesheet"/>
+  <script src="config.js"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            primary: "#2dd4bf",
+            "on-primary": "#042f2e",
+            surface: "#0d1a19",
+            "surface-low": "#091411",
+            background: "#060d0c",
+            "on-surface": "#ccfbf1",
+            "on-surface-variant": "#8b9d9a",
+            outline: "#1a3a37",
+          },
+          fontFamily: {
+            sans: ["Inter", "sans-serif"],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-sans antialiased selection:bg-primary/30">
+
+  <div id="particles-js" class="fixed inset-0 z-0 pointer-events-none"></div>
+
+  <!-- Nav -->
+  <nav class="fixed top-0 left-0 w-full z-50 border-b border-white/5 bg-background/80 backdrop-blur-xl">
+    <div class="flex justify-between items-center h-16 px-6 max-w-5xl mx-auto">
+      <a href="#" class="text-lg font-bold tracking-tight text-primary">JP.DEV</a>
+      <div class="hidden sm:flex items-center gap-6 text-sm font-medium">
+        <a href="#hero" class="text-on-surface-variant hover:text-primary transition-colors">Inicio</a>
+        <a href="#skills" class="text-on-surface-variant hover:text-primary transition-colors">Skills</a>
+        <a href="#projects" class="text-on-surface-variant hover:text-primary transition-colors">Proyectos</a>
+        <a href="#contact" class="text-on-surface-variant hover:text-primary transition-colors">Contacto</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="relative z-10">
+    <!-- Hero -->
+    <section id="hero" class="min-h-screen flex items-center pt-16">
+      <div class="max-w-5xl mx-auto px-6 w-full py-20">
+        <div class="max-w-2xl">
+          <span class="text-sm font-medium text-primary uppercase tracking-widest">Hola, soy</span>
+          <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-on-surface mt-3 leading-tight">
+            <span id="hero-name"></span>
+          </h1>
+          <div class="text-2xl md:text-3xl text-on-surface-variant mt-3 font-medium">
+            <span id="hero-title"></span>
+          </div>
+          <p class="text-base md:text-lg text-on-surface-variant mt-6 leading-relaxed max-w-xl" id="hero-bio"></p>
+          <div class="flex flex-wrap gap-4 mt-8">
+            <a href="#projects" class="bg-primary text-on-primary px-6 py-3 rounded-xl font-semibold hover:brightness-110 active:scale-95 transition-all shadow-lg shadow-primary/20">
+              Ver Proyectos
+            </a>
+            <a href="#" id="cv-download" target="_blank" class="border border-primary/40 text-primary px-6 py-3 rounded-xl font-semibold hover:bg-primary/10 transition-all flex items-center gap-2">
+              <span class="material-symbols-outlined text-lg">download</span> CV
+            </a>
+          </div>
+          <div class="flex gap-3 mt-8">
+            <a href="#" target="_blank" id="social-github" class="flex items-center gap-2 border border-outline rounded-xl px-4 py-2 text-sm font-medium text-on-surface-variant hover:border-primary hover:text-primary transition-all">
+              <span class="material-symbols-outlined text-lg">code</span> GitHub
+            </a>
+            <a href="#" target="_blank" id="social-linkedin" class="flex items-center gap-2 border border-outline rounded-xl px-4 py-2 text-sm font-medium text-on-surface-variant hover:border-primary hover:text-primary transition-all">
+              <span class="material-symbols-outlined text-lg">person_add</span> LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-24 px-6 max-w-5xl mx-auto">
+      <div class="mb-12 section-hidden">
+        <span class="text-xs font-semibold text-primary uppercase tracking-[0.2em]">Habilidades</span>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-on-surface mt-2">Stack técnico</h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4" id="skills-grid"></div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-24 px-6 max-w-5xl mx-auto">
+      <div class="mb-12 section-hidden">
+        <span class="text-xs font-semibold text-primary uppercase tracking-[0.2em]">Proyectos</span>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-on-surface mt-2">Trabajos destacados</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="projects-grid"></div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-24 px-6 max-w-5xl mx-auto">
+      <div class="mb-12 section-hidden">
+        <span class="text-xs font-semibold text-primary uppercase tracking-[0.2em]">Contacto</span>
+        <h2 class="text-3xl md:text-4xl font-bold tracking-tight text-on-surface mt-2">Hablemos</h2>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-5 gap-10 section-hidden">
+        <div class="md:col-span-3">
+          <form id="contact-form" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <input id="name" name="name" type="text" placeholder="Tu nombre" required
+                class="w-full bg-surface border border-outline rounded-xl px-4 py-3 text-sm text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:border-primary transition-all"/>
+              <input id="email" name="email" type="email" placeholder="Tu email" required
+                class="w-full bg-surface border border-outline rounded-xl px-4 py-3 text-sm text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:border-primary transition-all"/>
+            </div>
+            <textarea id="message" name="message" rows="4" placeholder="Cuéntame sobre tu proyecto..." required
+              class="w-full bg-surface border border-outline rounded-xl px-4 py-3 text-sm text-on-surface placeholder-on-surface-variant/50 focus:outline-none focus:border-primary transition-all resize-none"></textarea>
+            <button type="submit" id="submit-btn"
+              class="bg-primary text-on-primary px-6 py-3 rounded-xl font-semibold hover:brightness-110 active:scale-95 transition-all flex items-center gap-2 shadow-lg shadow-primary/20">
+              <span>Enviar mensaje</span>
+              <span class="material-symbols-outlined text-lg">send</span>
+            </button>
+            <p class="text-xs text-on-surface-variant/60" id="form-status"></p>
+          </form>
+        </div>
+        <div class="md:col-span-2 flex flex-col justify-between">
+          <div>
+            <p class="text-sm text-on-surface-variant mb-1">Escríbeme directamente</p>
+            <a href="mailto:pjuanpa37@gmail.com" class="text-primary font-medium hover:underline">pjuanpa37@gmail.com</a>
+          </div>
+          <div class="flex gap-4 mt-6">
+            <a href="https://github.com/JPerez991" target="_blank" class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors text-sm font-medium">
+              <span class="material-symbols-outlined text-base">code</span> GitHub
+            </a>
+            <a href="https://www.linkedin.com/in/juanpabloperez-/" target="_blank" class="flex items-center gap-1 text-on-surface-variant hover:text-primary transition-colors text-sm font-medium">
+              <span class="material-symbols-outlined text-base">person_add</span> LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Project Modal -->
+  <div id="project-modal" class="fixed inset-0 z-[60] hidden items-center justify-center p-4">
+    <div class="absolute inset-0 bg-black/70 backdrop-blur-sm" id="modal-backdrop"></div>
+    <div class="relative glass-card rounded-2xl p-6 md:p-8 max-w-lg w-full max-h-[80vh] overflow-y-auto">
+      <button id="modal-close" class="absolute top-4 right-4 text-on-surface-variant hover:text-on-surface transition-colors">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <div class="space-y-4">
+        <div id="modal-tech" class="flex flex-wrap gap-1.5"></div>
+        <h3 id="modal-title" class="text-2xl font-bold text-on-surface"></h3>
+        <p id="modal-desc" class="text-sm text-on-surface-variant leading-relaxed"></p>
+        <div id="modal-links" class="flex flex-wrap gap-3 pt-2"></div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="relative z-10 border-t border-outline/30 py-6 px-6">
+    <div class="max-w-5xl mx-auto flex justify-between items-center text-xs text-on-surface-variant/60">
+      <span id="footer-text"></span>
+      <span>Juan Pablo Pérez</span>
+    </div>
+  </footer>
+
+  <script>
+    tsParticles.load('particles-js', {
+      fpsLimit: 30,
+      background: { color: 'transparent' },
+      particles: {
+        number: { value: 40, density: { enable: true, width: 800 } },
+        color: { value: '#2dd4bf' },
+        shape: { type: 'circle' },
+        opacity: { value: 0.3, random: true, animation: { enable: true, speed: 0.5 } },
+        size: { value: 2, random: true, animation: { enable: true, speed: 1, minimumValue: 0.5 } },
+        move: {
+          enable: true, speed: 0.4, direction: 'none', random: true, straight: false,
+          outModes: { default: 'bounce' },
+          attract: { enable: true, rotateX: 600, rotateY: 600 },
+        },
+        links: {
+          enable: true, distance: 150, color: '#2dd4bf', opacity: 0.15, width: 1,
+        },
+      },
+      interactivity: {
+        events: {
+          onHover: { enable: true, mode: 'grab' },
+          onClick: { enable: true, mode: 'push' },
+        },
+        modes: {
+          grab: { distance: 180, links: { opacity: 0.4 } },
+          push: { quantity: 2 },
+        },
+      },
+      detectRetina: true,
+    });
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const c = window.config;
+
+      document.getElementById('page-title').textContent = `${c.name} | ${c.title}`;
+      document.getElementById('hero-name').textContent = `${c.name} ${c.lastName || ''}`;
+      document.getElementById('hero-title').textContent = c.title;
+      document.getElementById('hero-bio').textContent = c.bio;
+      document.getElementById('footer-text').textContent = `© ${new Date().getFullYear()} ${c.name} ${c.lastName || ''}`;
+
+      document.getElementById('social-github').href = c.social.github;
+      document.getElementById('social-linkedin').href = c.social.linkedin;
+
+      const cvBtn = document.getElementById('cv-download');
+      if (c.cvUrl) cvBtn.href = c.cvUrl;
+      else cvBtn.style.display = 'none';
+
+      // Skills grid
+      const skillsGrid = document.getElementById('skills-grid');
+      const categories = [
+        { label: 'Lenguajes', items: c.skills.languages, icon: 'code' },
+        { label: 'Frameworks', items: c.skills.frameworks, icon: 'layers' },
+        { label: 'Bases de Datos', items: c.skills.databases, icon: 'database' },
+        { label: 'Herramientas', items: c.skills.tools, icon: 'build' },
+      ];
+      categories.forEach((cat, i) => {
+        const card = document.createElement('div');
+        card.className = 'glass-card rounded-2xl p-5 space-y-3 section-hidden';
+        card.style.transitionDelay = `${i * 100}ms`;
+        card.innerHTML = `
+          <div class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-primary text-xl">${cat.icon}</span>
+            <h3 class="text-sm font-semibold text-on-surface">${cat.label}</h3>
+          </div>
+          <div class="flex flex-wrap gap-1.5">
+            ${cat.items.map(s => `<span class="px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">${s}</span>`).join('')}
+          </div>
+        `;
+        skillsGrid.appendChild(card);
+      });
+
+      // Modal
+      const modal = document.getElementById('project-modal');
+      const modalBackdrop = document.getElementById('modal-backdrop');
+      const modalClose = document.getElementById('modal-close');
+      const modalTitle = document.getElementById('modal-title');
+      const modalDesc = document.getElementById('modal-desc');
+      const modalTech = document.getElementById('modal-tech');
+      const modalLinks = document.getElementById('modal-links');
+
+      function openModal(project) {
+        modalTitle.textContent = project.title;
+        modalDesc.textContent = project.description;
+        modalTech.innerHTML = (project.tech || []).map(t =>
+          `<span class="px-2.5 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">${t}</span>`
+        ).join('');
+        modalLinks.innerHTML = '';
+        if (project.github) {
+          const a = document.createElement('a');
+          a.href = project.github; a.target = '_blank';
+          a.className = 'flex items-center gap-1.5 bg-primary/10 text-primary px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/20 transition-all';
+          a.innerHTML = '<span class="material-symbols-outlined text-base">code</span> Ver código';
+          modalLinks.appendChild(a);
+        }
+        if (project.demo) {
+          const a = document.createElement('a');
+          a.href = project.demo; a.target = '_blank';
+          a.className = 'flex items-center gap-1.5 bg-primary text-on-primary px-4 py-2 rounded-lg text-sm font-medium hover:brightness-110 transition-all';
+          a.innerHTML = '<span class="material-symbols-outlined text-base">open_in_new</span> Ver demo';
+          modalLinks.appendChild(a);
+        }
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+      }
+
+      function closeModal() {
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+      }
+
+      modalClose.addEventListener('click', closeModal);
+      modalBackdrop.addEventListener('click', closeModal);
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+      // Projects grid
+      const projectsGrid = document.getElementById('projects-grid');
+      (c.projects || []).forEach((project, i) => {
+        const card = document.createElement('div');
+        card.className = 'glass-card rounded-2xl overflow-hidden section-hidden';
+        card.style.transitionDelay = `${i * 100}ms`;
+        card.innerHTML = `
+          <div class="p-5 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs text-on-surface-variant/60">${project.year || ''}</span>
+              <div class="flex flex-wrap gap-1.5">
+                ${(project.tech || []).slice(0, 3).map(t => `<span class="px-2 py-0.5 rounded-full bg-primary/10 text-primary text-xs font-medium">${t}</span>`).join('')}
+              </div>
+            </div>
+            <h3 class="text-lg font-bold text-on-surface">${project.title}</h3>
+            <p class="text-sm text-on-surface-variant leading-relaxed line-clamp-2">${project.description}</p>
+            <button class="project-detail-btn w-full mt-2 border border-primary/30 text-primary px-4 py-2 rounded-lg text-sm font-medium hover:bg-primary/10 transition-all flex items-center justify-center gap-1.5">
+              <span class="material-symbols-outlined text-base">visibility</span> Ver proyecto
+            </button>
+          </div>
+        `;
+        card.querySelector('.project-detail-btn').addEventListener('click', () => openModal(project));
+        projectsGrid.appendChild(card);
+      });
+
+      // Scroll reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('section-visible');
+              entry.target.classList.remove('section-hidden');
+            }, parseInt(entry.target.style.transitionDelay) || 0);
+          }
+        });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.section-hidden').forEach(el => observer.observe(el));
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          e.preventDefault();
+          const id = a.getAttribute('href').slice(1);
+          document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+        });
+      });
+
+      // Form
+      const form = document.getElementById('contact-form');
+      const status = document.getElementById('form-status');
+      const btn = document.getElementById('submit-btn');
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(form);
+        if (!data.get('name') || !data.get('email') || !data.get('message')) {
+          status.textContent = 'Completa todos los campos.';
+          return;
+        }
+        btn.innerHTML = '<span class="material-symbols-outlined animate-spin text-lg">progress_activity</span> Enviando...';
+        btn.disabled = true;
+        try {
+          await fetch('https://formspree.io/f/your-form-id', {
+            method: 'POST', body: data, headers: { Accept: 'application/json' },
+          });
+          btn.innerHTML = '<span class="material-symbols-outlined text-lg">check</span> Enviado!';
+          status.textContent = 'Gracias, te responderé pronto.';
+          status.className = 'text-xs text-primary';
+          form.reset();
+          setTimeout(() => {
+            btn.innerHTML = '<span>Enviar mensaje</span><span class="material-symbols-outlined text-lg">send</span>';
+            btn.disabled = false;
+            status.textContent = '';
+          }, 3000);
+        } catch {
+          btn.innerHTML = '<span>Enviar mensaje</span><span class="material-symbols-outlined text-lg">send</span>';
+          btn.disabled = false;
+          status.textContent = 'Error. Escríbeme directo a pjuanpa37@gmail.com';
+          status.className = 'text-xs text-red-400';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

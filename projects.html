@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html class="dark" lang="es">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title id="page-title">Proyectos | Juan Pablo</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+  <link href="styles.css" rel="stylesheet"/>
+  <script src="config.js"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#b8cda9",
+            "on-primary": "#24351c",
+            "primary-container": "#5e7153",
+            "primary-fixed": "#d4e9c4",
+            "surface": "#12140f",
+            "surface-dim": "#12140f",
+            "surface-bright": "#383a34",
+            "surface-container": "#1e201b",
+            "surface-container-low": "#1a1c17",
+            "surface-container-high": "#292b25",
+            "on-surface": "#e3e3da",
+            "on-surface-variant": "#c4c8bd",
+            "secondary": "#e1c298",
+            "tertiary": "#f0bd8b",
+            "outline": "#8e9288",
+            "outline-variant": "#444840",
+            "background": "#12140f",
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"],
+          },
+        },
+      },
+    }
+  </script>
+</head>
+<body class="bg-background text-on-surface font-sans antialiased selection:bg-primary-container selection:text-on-primary">
+
+  <div class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+    <div class="noise-overlay absolute inset-0"></div>
+  </div>
+
+  <nav class="fixed top-0 left-0 w-full z-50 border-b border-white/5 bg-surface/80 backdrop-blur-xl shadow-2xl shadow-primary/5">
+    <div class="flex justify-between items-center h-20 px-6 md:px-10 max-w-7xl mx-auto">
+      <a href="index.html" class="text-lg md:text-headline-md font-bold tracking-tighter text-on-surface">JP.DEV</a>
+      <div class="hidden md:flex items-center gap-8">
+        <a href="index.html" class="text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors duration-300">Inicio</a>
+        <a href="projects.html" class="text-label-md uppercase tracking-wider text-primary font-bold border-b-2 border-primary pb-1">Proyectos</a>
+        <a href="skills.html" class="text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors duration-300">Habilidades</a>
+        <a href="contact.html" class="text-label-md uppercase tracking-wider text-on-surface-variant hover:text-on-surface transition-colors duration-300">Contacto</a>
+      </div>
+      <a href="contact.html" class="bg-primary text-on-primary px-5 py-2 rounded-full text-label-md uppercase tracking-widest hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20">
+        Contáctame
+      </a>
+    </div>
+  </nav>
+
+  <main class="relative z-10 pt-32 pb-24 px-6 md:px-10 max-w-7xl mx-auto">
+    <header class="mb-16">
+      <div class="flex items-center gap-4 mb-4">
+        <span class="h-px w-12 bg-primary"></span>
+        <span class="text-label-md text-primary uppercase tracking-[0.2em]">Portafolio</span>
+      </div>
+      <h1 class="text-5xl md:text-6xl font-extrabold tracking-tighter text-on-surface max-w-2xl">
+        Proyectos y <span class="text-primary italic">Trabajos</span>
+      </h1>
+      <p class="text-body-lg text-on-surface-variant max-w-xl mt-4">
+        Una colección de aplicaciones web, APIs y herramientas digitales construidas con tecnologías modernas.
+      </p>
+    </header>
+
+    <!-- Filters -->
+    <div class="flex flex-wrap gap-3 mb-12" id="filter-container">
+      <button class="filter-btn px-5 py-2 rounded-full border font-label-md transition-all active" data-filter="all">Todos</button>
+    </div>
+
+    <!-- Loader -->
+    <div id="projects-loader" class="flex justify-center py-20">
+      <div class="flex flex-col items-center gap-4">
+        <span class="material-symbols-outlined text-4xl text-primary animate-spin">progress_activity</span>
+        <span class="text-label-md text-on-surface-variant">Cargando proyectos...</span>
+      </div>
+    </div>
+
+    <!-- Projects Grid -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="projects-grid"></div>
+
+    <!-- Repos from GitHub -->
+    <div class="mt-24">
+      <div class="flex items-center gap-4 mb-8">
+        <span class="h-px w-12 bg-primary"></span>
+        <span class="text-label-md text-primary uppercase tracking-[0.2em]">GitHub</span>
+      </div>
+      <h2 class="text-3xl md:text-4xl font-bold tracking-tighter text-on-surface mb-2">Repositorios Destacados</h2>
+      <p class="text-body-md text-on-surface-variant mb-8">Proyectos open-source y contribuciones.</p>
+      <div id="github-loader" class="flex justify-center py-10">
+        <div class="flex flex-col items-center gap-4">
+          <span class="material-symbols-outlined text-3xl text-primary animate-spin">progress_activity</span>
+          <span class="text-label-sm text-on-surface-variant">Cargando repositorios...</span>
+        </div>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="github-repos"></div>
+    </div>
+  </main>
+
+  <footer class="relative z-10 border-t border-white/5 py-8 px-6 md:px-10">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+      <div class="text-label-sm text-on-surface-variant/60" id="footer-text"></div>
+      <div class="flex gap-4">
+        <a href="index.html" class="text-label-sm text-on-surface-variant/40 hover:text-primary transition-colors">Inicio</a>
+        <a href="projects.html" class="text-label-sm text-on-surface-variant/40 hover:text-primary transition-colors">Proyectos</a>
+        <a href="skills.html" class="text-label-sm text-on-surface-variant/40 hover:text-primary transition-colors">Habilidades</a>
+        <a href="contact.html" class="text-label-sm text-on-surface-variant/40 hover:text-primary transition-colors">Contacto</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const c = window.config;
+      const projectsGrid = document.getElementById('projects-grid');
+      const loader = document.getElementById('projects-loader');
+      const filterContainer = document.getElementById('filter-container');
+
+      document.getElementById('page-title').textContent = `Proyectos | ${c.name}`;
+      document.getElementById('footer-text').textContent = `© ${new Date().getFullYear()} ${c.name} ${c.lastName || ''} — ${c.title}`;
+
+      const projects = c.projects || [];
+
+      // Extract all unique tech tags
+      const allTech = new Set();
+      projects.forEach(p => (p.tech || []).forEach(t => allTech.add(t)));
+      const techArray = Array.from(allTech).sort();
+
+      // Create filter buttons
+      techArray.forEach(tech => {
+        const btn = document.createElement('button');
+        btn.className = 'filter-btn px-5 py-2 rounded-full border font-label-md transition-all border-white/5 bg-surface-container-low text-on-surface-variant hover:border-primary/30';
+        btn.dataset.filter = tech.toLowerCase();
+        btn.textContent = tech;
+        filterContainer.appendChild(btn);
+      });
+
+      function renderProjects(filter = 'all') {
+        const filtered = filter === 'all'
+          ? projects
+          : projects.filter(p => (p.tech || []).some(t => t.toLowerCase() === filter));
+
+        projectsGrid.innerHTML = '';
+        loader.style.display = 'none';
+
+        if (filtered.length === 0) {
+          projectsGrid.innerHTML = '<div class="col-span-full text-center py-16"><span class="material-symbols-outlined text-5xl text-on-surface-variant/30 mb-4">folder_off</span><p class="text-on-surface-variant">No hay proyectos con ese filtro.</p></div>';
+          return;
+        }
+
+        filtered.forEach((project, idx) => {
+          const isLarge = idx === 0 && filter === 'all';
+          const colClass = isLarge ? 'lg:col-span-2 group' : 'group';
+          const heightClass = isLarge ? 'h-72 md:h-96' : 'h-48';
+
+          const card = document.createElement('div');
+          card.className = colClass;
+          card.innerHTML = `
+            <article class="glass-card rounded-3xl overflow-hidden h-full flex flex-col">
+              <div class="relative ${heightClass} overflow-hidden">
+                <img class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" src="${project.image}" alt="${project.title}" loading="lazy"/>
+                <div class="absolute inset-0 bg-gradient-to-t from-background via-transparent to-transparent"></div>
+                <div class="absolute top-5 left-5 flex gap-2">
+                  <span class="px-3 py-1 rounded-full bg-surface/80 backdrop-blur-md text-primary text-label-sm border border-white/10">${project.year || ''}</span>
+                  ${project.featured ? '<span class="px-3 py-1 rounded-full bg-surface/80 backdrop-blur-md text-tertiary text-label-sm border border-white/10">Destacado</span>' : ''}
+                </div>
+              </div>
+              <div class="p-6 md:p-8 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 class="text-headline-md text-on-surface mb-2">${project.title}</h3>
+                  <p class="text-body-md text-on-surface-variant line-clamp-3">${project.description}</p>
+                </div>
+                <div class="mt-6 space-y-4">
+                  <div class="flex flex-wrap gap-2">
+                    ${(project.tech || []).map(t => `<span class="skill-chip px-3 py-1 rounded-full text-label-sm text-primary">${t}</span>`).join('')}
+                  </div>
+                  <div class="flex gap-4">
+                    ${project.github ? `<a href="${project.github}" target="_blank" class="flex items-center gap-2 text-label-md text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">code</span> GitHub</a>` : ''}
+                    ${project.demo ? `<a href="${project.demo}" target="_blank" class="flex items-center gap-2 text-label-md text-on-surface-variant hover:text-primary transition-colors"><span class="material-symbols-outlined text-lg">open_in_new</span> Demo</a>` : ''}
+                  </div>
+                </div>
+              </div>
+            </article>
+          `;
+          projectsGrid.appendChild(card);
+        });
+      }
+
+      // Filter event listeners
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.filter-btn').forEach(b => {
+            b.className = 'filter-btn px-5 py-2 rounded-full border font-label-md transition-all border-white/5 bg-surface-container-low text-on-surface-variant hover:border-primary/30';
+          });
+          btn.className = 'filter-btn px-5 py-2 rounded-full border font-label-md transition-all bg-primary/10 text-primary border-primary';
+          renderProjects(btn.dataset.filter);
+        });
+      });
+
+      // Set "All" as active
+      const allBtn = document.querySelector('[data-filter="all"]');
+      if (allBtn) {
+        allBtn.className = 'filter-btn px-5 py-2 rounded-full border font-label-md transition-all bg-primary/10 text-primary border-primary';
+      }
+
+      renderProjects('all');
+
+      // GitHub Repos
+      const githubRepos = document.getElementById('github-repos');
+      const githubLoader = document.getElementById('github-loader');
+
+      async function loadGitHubRepos() {
+        try {
+          const res = await fetch(`https://api.github.com/users/${c.githubUsername}/repos?sort=updated&per_page=6`);
+          if (!res.ok) throw new Error('GitHub API error');
+          const repos = await res.json();
+          githubLoader.style.display = 'none';
+
+          if (repos.length === 0) {
+            githubRepos.innerHTML = '<div class="col-span-full text-center py-8"><p class="text-on-surface-variant">No hay repositorios públicos.</p></div>';
+            return;
+          }
+
+          repos.forEach(repo => {
+            const div = document.createElement('div');
+            div.className = 'glass-card rounded-2xl p-6 group';
+            div.innerHTML = `
+              <div class="flex items-start justify-between mb-4">
+                <span class="material-symbols-outlined text-primary text-2xl">folder</span>
+                <span class="text-label-sm text-on-surface-variant/60">${repo.language || 'N/A'}</span>
+              </div>
+              <h3 class="text-headline-md text-on-surface mb-2">
+                <a href="${repo.html_url}" target="_blank" class="hover:text-primary transition-colors">${repo.name}</a>
+              </h3>
+              <p class="text-body-md text-on-surface-variant line-clamp-2 mb-4">${repo.description || 'Sin descripción'}</p>
+              <div class="flex items-center gap-4 text-label-sm text-on-surface-variant/60">
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary"></span> ${repo.stargazers_count} stars</span>
+                <span class="flex items-center gap-1"><span class="material-symbols-outlined text-sm">call_split</span> ${repo.forks_count} forks</span>
+              </div>
+            `;
+            githubRepos.appendChild(div);
+          });
+        } catch (err) {
+          githubLoader.style.display = 'none';
+          githubRepos.innerHTML = `
+            <div class="col-span-full glass-card rounded-2xl p-8 text-center">
+              <span class="material-symbols-outlined text-4xl text-on-surface-variant/30 mb-2">cloud_off</span>
+              <p class="text-on-surface-variant">No se pudieron cargar los repositorios. Verifica tu usuario de GitHub en <code class="text-primary">config.js</code>.</p>
+              <p class="text-label-sm text-on-surface-variant/60 mt-2">${err.message}</p>
+            </div>
+          `;
+        }
+      }
+
+      if (c.githubUsername && c.githubUsername !== 'tuusuario') {
+        loadGitHubRepos();
+      } else {
+        githubLoader.style.display = 'none';
+        githubRepos.innerHTML = `
+          <div class="col-span-full glass-card rounded-2xl p-8 text-center">
+            <span class="material-symbols-outlined text-4xl text-on-surface-variant/30 mb-2">person_off</span>
+            <p class="text-on-surface-variant">Configura tu usuario de GitHub en <code class="text-primary">config.js</code> (variable <code>githubUsername</code>) para ver tus repositorios aquí.</p>
+          </div>
+        `;
+      }
+
+      // Scroll reveal
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('section-visible');
+            entry.target.classList.remove('section-hidden');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.glass-card').forEach(el => {
+        el.classList.add('section-hidden');
+        observer.observe(el);
+      });
+    });
+  </script>
+</body>
+</html>

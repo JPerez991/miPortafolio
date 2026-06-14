@@ -1,0 +1,41 @@
+.glass-card {
+  background: rgba(13, 26, 25, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glass-card:hover {
+  border-color: rgba(45, 212, 191, 0.35);
+  box-shadow: 0 0 30px rgba(45, 212, 191, 0.1), 0 8px 32px rgba(0, 0, 0, 0.3);
+  transform: translateY(-6px);
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.section-hidden {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+input:focus, textarea:focus {
+  box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.15);
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: #060d0c; }
+::-webkit-scrollbar-thumb { background: #2dd4bf; border-radius: 10px; }
