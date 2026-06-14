@@ -2,7 +2,7 @@ window.config = {
   name: "Juan Pablo",
   lastName: "Pérez",
   title: "Desarrollador Full-Stack",
-  email: "pjuanpa37@gmail.com",
+  email: "juanperezd861@gmail.com",
   bio: "Ingeniero de Sistemas con experiencia en desarrollo web full-stack. Apasionado por crear aplicaciones que resuelven problemas reales.",
   githubUsername: "JPerez991",
   cvUrl: "cv.pdf",
